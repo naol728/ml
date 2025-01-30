@@ -1,6 +1,7 @@
 flask
 joblib
-scikit-learn
 numpy
 pandas
 fastapi
+scikit-learn
+uvicorn
