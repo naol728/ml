@@ -1,37 +1,27 @@
-from flask import Flask, request, jsonify
+from fastapi import FastAPI
 import joblib
 import numpy as np
+from pydantic import BaseModel
+
+app = FastAPI()
 
 # Load the trained model
 model = joblib.load('diabetes_model.pkl')
 
-# Initialize the Flask application
-app = Flask(__name__)
+class InputData(BaseModel):
+    pregnancies: int
+    glucose: int
+    blood_pressure: int
+    skin_thickness: int
+    insulin: int
+    bmi: float
+    diabetes_pedigree_function: float
+    age: int
 
-# Define the prediction route
-@app.route('/predict', methods=['POST'])
-def predict():
-    # Get JSON data from the request
-    data = request.get_json()
-
-    # Ensure that the incoming data is in the correct format
-    features = np.array([[
-        data['Pregnancies'],
-        data['Glucose'],
-        data['BloodPressure'],
-        data['SkinThickness'],
-        data['Insulin'],
-        data['BMI'],
-        data['DiabetesPedigreeFunction'],
-        data['Age']
-    ]])
-
-    # Make the prediction
-    prediction = model.predict(features)
-
-    # Return the result as JSON
-    return jsonify({'prediction': int(prediction[0])})
-
-if __name__ == '__main__':
-    # Run the Flask app on port 5000
-    app.run(debug=True, port=5000)
+@app.post("/predict")
+def predict(data: InputData):
+    input_data = np.array([[data.pregnancies, data.glucose, data.blood_pressure, data.skin_thickness,
+                            data.insulin, data.bmi, data.diabetes_pedigree_function, data.age]])
+    
+    prediction = model.predict(input_data)
+    return {"prediction": prediction[0]}
