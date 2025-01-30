@@ -5,7 +5,7 @@ from pydantic import BaseModel
 
 app = FastAPI()
 
-# Load the trained model
+# Load the trained model (Make sure the path to 'diabetes_model.pkl' is correct)
 model = joblib.load('diabetes_model.pkl')
 
 class InputData(BaseModel):
@@ -20,8 +20,12 @@ class InputData(BaseModel):
 
 @app.post("/predict")
 def predict(data: InputData):
+    # Convert the input data into a numpy array for prediction
     input_data = np.array([[data.pregnancies, data.glucose, data.blood_pressure, data.skin_thickness,
                             data.insulin, data.bmi, data.diabetes_pedigree_function, data.age]])
-    
+
+    # Make the prediction
     prediction = model.predict(input_data)
-    return {"prediction": prediction[0]}
+    
+    # Return the prediction as a JSON response
+    return {"prediction": int(prediction[0])}  # Ensure prediction is an integer (0 or 1)
