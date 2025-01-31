@@ -3,5 +3,5 @@ joblib
 numpy
 pandas
 fastapi
-scikit-learn==1.5.1
+scikit-learn
 uvicorn
