@@ -1,21 +1,69 @@
-# Pima Indians Diabetes Database
+# 🔬 Diabetes Prediction - Machine Learning Project  
 
-## Predicting the onset of diabetes
+## 📖 Project Overview  
+This project is part of my **Fundamentals of Machine Learning** course. The goal is to **predict the likelihood of diabetes** based on patient health metrics using a **classification model**.  
 
-I've explored, analysed the Pima Indians Diabetes Dataset, and applied Machine Learning Techniques. I've analysed and discussed the results using the knowledge acquired as a experienced Registered Dietitian.
+I followed the **entire ML pipeline**, from **data preprocessing and model training** to **evaluation and deployment** as an API.  
 
-The Pima Indian Diabetes Dataset, originally from the National Institute of Diabetes and Digestive and Kidney Diseases, contains information of 768 women from a population near Phoenix, Arizona, USA. The outcome tested was Diabetes, 258 tested positive and 500 tested negative. Therefore, there is one target (dependent) variable and the 8 attributes (TYNECKI, 2018): pregnancies, OGTT(Oral Glucose Tolerance Test), blood pressure, skin thickness, insulin, BMI(Body Mass Index), age, pedigree diabetes function.
-The Pima population has been under study by the National Institute of Diabetes and Digestive and Kidney Diseases at intervals of 2 years since 1965. As epidemiological evidence indicates that T2DM results from interaction of genetic and environmental factors, the Pima Indians Diabetes Dataset includes information about attributes that could and should be related to the onset of diabetes and its future complications.
+## 📊 Dataset  
+- **File:** `diabetes.csv`  
+- **Source:** https://figshare.com/articles/dataset/diabetes_csv/25421347
+- **Description:** Contains various health indicators like glucose levels, blood pressure, insulin, BMI, and age, used to predict diabetes presence.  
 
-:pushpin: Python v 3.7
+## ⚙️ Tech Stack  
+- **Python** 🐍  
+- **pandas, numpy** (Data Processing)  
+- **scikit-learn** (Model Training & Evaluation)  
+- **matplotlib, seaborn** (Data Visualization)  
+- **Flask  ** (Model Deployment)  
+## api endpoint 
+ POST /predict
+elample of request
+json {
+  "pregnancies": 2,
+  "glucose": 120,
+  "blood_pressure": 70,
+  "skin_thickness": 20,
+  "insulin": 80,
+  "bmi": 25.5,
+  "diabetes_pedigree_function": 0.5,
+  "age": 30
+}
+example resopnse 
+{
+  "prediction": 1  // (1 = Diabetic, 0 = Not Diabetic)
+}
+##📊 Model Evaluation
+Accuracy: 78%
+Metrics Used: Precision, Recall, F1-score
+Visualization: Confusion Matrix, Feature Importance
+🛠️ Deployment
+This model is deployed on Render .
+🔗 Live API Link: https://ml-4-skka.onrender.com/predict
 
-:pushpin: Libraries used:
+##🎯 Future Improvements
+Optimize feature selection 🔍
+Tune hyperparameters using GridSearchCV ⚙️
+Deploy a React-based UI for better accessibility 💻
 
-- pandas
-- numpy
-- seaborn
-- matplotlib.pyplot
-- sklearn
-- statsmodels
+## 🛠️ Setup & Installation  
+1. **Clone this repository:**  
+   ```bash
+   git clone https://github.com/naol728/ml
+   cd diabetes-prediction
+2  **install dependencys 
+   ```bash
+   pip install -r requirements.txt
+   python train_model.py
+   uvicorn app:app --reload  # For FastAPI
+   python app.py  # For Flask
+```
+### **📌 Next Steps**
+✅ **Update the GitHub repo link** (`yourusername` → your actual username)  
+✅ **Replace API URL** with your **live deployment link**  
+✅ **Add `train_model.py` and `app.py` if needed**  
 
-:pushpin: [Jupyter notebook](https://jupyter.org/) was used. :bell: In case of any problem to visualise the project, please check [here](shorturl.at/hHLT4)
+Would you like me to **generate the training script (`train_model.py`) and API (`app.py`) for you?** 🚀
+
+
+
