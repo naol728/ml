@@ -19,7 +19,7 @@ I followed the **entire ML pipeline**, from **data preprocessing and model train
 ## api endpoint 
  POST /predict
 elample of request
-json {
+## json {
   "pregnancies": 2,
   "glucose": 120,
   "blood_pressure": 70,
@@ -33,15 +33,15 @@ example resopnse
 {
   "prediction": 1  // (1 = Diabetic, 0 = Not Diabetic)
 }
-##📊 Model Evaluation
+## 📊 Model Evaluation
 Accuracy: 78%
 Metrics Used: Precision, Recall, F1-score
 Visualization: Confusion Matrix, Feature Importance
-🛠️ Deployment
+## 🛠️ Deployment
 This model is deployed on Render .
 🔗 Live API Link: https://ml-4-skka.onrender.com/predict
 
-##🎯 Future Improvements
+## 🎯 Future Improvements
 Optimize feature selection 🔍
 Tune hyperparameters using GridSearchCV ⚙️
 Deploy a React-based UI for better accessibility 💻
@@ -58,12 +58,7 @@ Deploy a React-based UI for better accessibility 💻
    uvicorn app:app --reload  # For FastAPI
    python app.py  # For Flask
 ```
-### **📌 Next Steps**
-✅ **Update the GitHub repo link** (`yourusername` → your actual username)  
-✅ **Replace API URL** with your **live deployment link**  
-✅ **Add `train_model.py` and `app.py` if needed**  
 
-Would you like me to **generate the training script (`train_model.py`) and API (`app.py`) for you?** 🚀
 
 
 
