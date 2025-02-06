@@ -1,11 +1,13 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import joblib
 import numpy as np
 import warnings
+
 warnings.simplefilter("ignore")
 
-
 app = Flask(__name__)
+CORS(app)  # Enable CORS for the app
 
 # Load the trained model
 model = joblib.load("diabetes_model.pkl")
