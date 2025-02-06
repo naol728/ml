@@ -5,3 +5,4 @@ pandas
 fastapi
 scikit-learn
 uvicorn
+flask-cors
